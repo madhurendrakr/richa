@@ -1,5 +1,6 @@
 import { Product } from "../models/productModel.js";
 
+
 export const productAdd = async (req, res) => {
   if (req.method !== "POST")
     return res.status(400).json({ error: "Bad Request" });
@@ -44,5 +45,16 @@ export const productApprove = async (req, res) => {
       return res.status(404).json({error:"Products Not Found"});
     }
     
+  }
+
+  export const getProduct = async(req,res)=>{
+    try {
+      const {id} = req.body
+      const product = await Product.findById(id);
+      if(!product) return res.status(404).json({error:"Product Not Found"});
+      return res.status(200).json({product})
+    } catch (error) {
+      return res.status(404).json({error:"Product not found"})
+    }
   }
   

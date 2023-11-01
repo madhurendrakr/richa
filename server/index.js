@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from 'cors'
 import { register,login } from "./controllers/authController.js";
-import { productAdd,productApprove ,getAllProducts} from "./controllers/productAddController.js";
+import { productAdd,productApprove ,getAllProducts, getProduct} from "./controllers/productAddController.js";
 dotenv.config();
 
 const app = express();
@@ -12,6 +12,7 @@ app.use(cors());
 app.post('/register',register);
 app.post('/login',login);
 app.post('/addProduct',productAdd);
+app.post('/getProduct',getProduct)
 app.patch('/approveProduct',productApprove)
 app.get('/getAllProducts',getAllProducts)
 

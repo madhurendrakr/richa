@@ -11,21 +11,21 @@ const ProductCard = ({ name, desc, price,category,image,id }) => {
     image,
     id
   }
-  const queryString = new URLSearchParams(data).toString()
+  // const queryString = new URLSearchParams(data).toString()
 
   let formalDesc = desc;
   if (desc.length > 50) formalDesc = desc.slice(0, 50) + "...";
   else formalDesc = desc;
   return (
     <div
-      onClick={() => navigate(`/product/${queryString}`)}
+      onClick={() => navigate(`/product/${id}`)}
       className="flex m-3 hover:scale-105 cursor-pointer"
     >
       <div className="border border-black rounded-lg">
         <div className="">
           <img
             className="w-full h-60 object-cover rounded-t-lg"
-            src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&q=80&w=1894&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src={image}
             alt=""
           />
         </div>
