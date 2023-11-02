@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const api = "http://localhost:3000/login";
 const LoginScreen = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -28,18 +28,28 @@ const LoginScreen = () => {
           password,
         })
         .then((res) => {
-          // console.log(res.data);
-          navigate('/')
+          console.log(res.data);
+          const jsonData = {
+            email: res.data.data.email,
+            isAdmin: res.data.data.isAdmin,
+            name: res.data.data.name,
+            id: res.data.data._id,
+          };
+          const sjson = JSON.stringify(jsonData);
+          localStorage.setItem("user_data", sjson);
+          if (jsonData.isAdmin) {
+            navigate("/adminPage");
+          } else navigate("/");
         })
         .catch((err) => {
           // console.log(err.data);
-          setError("Wrong Password or Invalid Email")
+          setError("Wrong Password or Invalid Email");
         });
     }
   };
   return (
     <div className="flex justify-center items-center h-screen gap-80 bg-blue-700">
-      <div className="text-8xl text-white font-bold">
+      <div className="text-8xl text-white font-bold hidden md:flex">
         Beautiful
         <br /> Login
         <br /> Form
@@ -49,7 +59,7 @@ const LoginScreen = () => {
         <h1 className="mb-12">Login to continue</h1>
         <form onSubmit={login} className="flex flex-col gap-6 my-4">
           <input
-            type='text'
+            type="email"
             placeholder="Enter Your Email"
             className="border border-black px-2 py-1 text-2xl rounded-lg"
             value={email}
@@ -57,7 +67,7 @@ const LoginScreen = () => {
           />
           <div className="flex items-center border border-black rounded-lg">
             <input
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               placeholder="Create Password"
               className="w-full py-2 px-4 outline-none text-2xl rounded-lg"
               value={password}

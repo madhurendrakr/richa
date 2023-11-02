@@ -42,7 +42,7 @@ const HomeScreen = () => {
           />
         </svg>
       </div>
-      <Navbar />
+      {/* <Navbar /> */}
       <img
         className="w-full h-60 object-cover"
         src="https://img.freepik.com/premium-photo/beautiful-mountain-range-reflects-tranquil-water-generative-ai_188544-9117.jpg?w=1060"

@@ -1,6 +1,10 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 const Navbar = () => {
+  const location = useLocation();
+  // console.log(location.pathname);
+  const pathname = location.pathname;
   return (
     <div className="flex px-5 py-2 justify-between border-b-2 border-black">
       <div className="flex items-center gap-3">
@@ -29,13 +33,41 @@ const Navbar = () => {
         </button>
       </div>
       <div className="flex font-bold text-2xl gap-4">
-        <h1>Home</h1>
+        <Link
+          to={"/"}
+          className={`hover:underline ${
+            pathname === "/" ? "underline" : "no-underline"
+          } cursor-pointer hover:transition duration-75 ease-in-out`}
+        >
+          Home
+        </Link>
         <h1>|</h1>
-        <h1>Contact</h1>
+        <Link
+          to={"/contact"}
+          className={`hover:underline ${
+            pathname === "/contact" ? "underline" : "no-underline"
+          } cursor-pointer hover:transition duration-75 ease-in-out`}
+        >
+          Contact
+        </Link>
         <h1>|</h1>
-        <h1>Profile</h1>
+        <Link
+          to={"/profile"}
+          className={`hover:underline ${
+            pathname === "/profile" ? "underline" : "no-underline"
+          } cursor-pointer hover:transition duration-75 ease-in-out`}
+        >
+          Profile
+        </Link>
         <h1>|</h1>
-        <h1>About</h1>
+        <Link
+          to={"/about"}
+          className={`hover:underline ${
+            pathname === "/about" ? "underline" : "no-underline"
+          } cursor-pointer hover:transition duration-75 ease-in-out`}
+        >
+          About
+        </Link>
         <h1>|</h1>
 
         <div className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer">

@@ -28,7 +28,7 @@ const ProductDetailsScreen = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="flex w-full justify-center mt-8">
         <div className="w-1/2 flex justify-end">
           <img
