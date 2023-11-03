@@ -7,7 +7,17 @@ import { useNavigate } from "react-router-dom";
 const api = "http://localhost:3000/getAllProducts";
 const HomeScreen = () => {
   const [productData, setProductData] = useState(null);
+  const [bookSelected, setBookSelected] = useState(false);
+  // const [bookSelected, setBookSelected] = useState(false);
+  // const [bookSelected, setBookSelected] = useState(false);
+  // const [bookSelected, setBookSelected] = useState(false);
   const navigate = useNavigate();
+  const bookFilter = () => {
+    if (!bookSelected && productData) {
+      const filteredArray = productData.filter(item=>item.category=="Books")
+    }
+    setBookSelected((prev) => !prev);
+  };
   const getData = () => {
     axios
       .get(api)
@@ -63,7 +73,12 @@ const HomeScreen = () => {
             </div>
             <div>
               <div className="flex gap-2">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  name="Books"
+                  checked={bookSelected}
+                  onChange={bookFilter}
+                />
                 <h1>Books</h1>
               </div>
               <div className="flex">

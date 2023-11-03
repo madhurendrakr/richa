@@ -123,6 +123,10 @@ const LoginScreen = () => {
           >
             Enter
           </button>
+
+          <div>
+            <h1 className="text-center">New user ? <Link to={'/register'} className="text-blue-600 font-bold">Sign up</Link></h1>
+          </div>
         </form>
       </div>
     </div>

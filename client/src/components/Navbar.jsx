@@ -1,10 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 const Navbar = () => {
+
+
   const location = useLocation();
   // console.log(location.pathname);
   const pathname = location.pathname;
+const navigate = useNavigate()
+  const logout = ()=>{
+    localStorage.removeItem("user_data")
+    navigate('/login')
+  }
   return (
     <div className="flex px-5 py-2 justify-between border-b-2 border-black">
       <div className="flex items-center gap-3">
@@ -70,7 +77,8 @@ const Navbar = () => {
         </Link>
         <h1>|</h1>
 
-        <div className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer">
+{/* Logout */}
+        <div onClick={logout} className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

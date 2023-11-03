@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from 'cors'
 import { register,login } from "./controllers/authController.js";
-import { productAdd,productApprove ,getAllProducts, getProduct} from "./controllers/productAddController.js";
+import { productAdd,productApprove ,getAllProducts, getProduct, getProductByUser} from "./controllers/productAddController.js";
+import { mailSender } from "./controllers/mailController.js";
 dotenv.config();
 
 const app = express();
@@ -15,6 +16,9 @@ app.post('/addProduct',productAdd);
 app.post('/getProduct',getProduct)
 app.patch('/approveProduct',productApprove)
 app.get('/getAllProducts',getAllProducts)
+app.post('/getProductByUser',getProductByUser)
+
+app.post('/sendMail',mailSender)
 
 app.get('/test',(req,res)=>{
     res.status(200).json({message:'Okay'})

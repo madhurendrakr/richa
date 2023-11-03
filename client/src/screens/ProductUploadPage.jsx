@@ -146,7 +146,7 @@ const ProductUploadPage = () => {
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="price"
-            type="text"
+            type="number"
             placeholder="Product Price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}

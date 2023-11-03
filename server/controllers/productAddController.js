@@ -47,6 +47,17 @@ export const productApprove = async (req, res) => {
     
   }
 
+  export const getProductByUser = async(req,res)=>{
+    try {
+      const {id} = req.body;
+      const product = await Product.find({addedBy:id});
+      if(!product)return res.status(400).json({error:"Not Found"})
+      return res.status(200).json({data:product})
+    } catch (error) {
+      res.status(400).json({error:"Not Found"})
+    }
+  }
+
   export const getProduct = async(req,res)=>{
     try {
       const {id} = req.body
