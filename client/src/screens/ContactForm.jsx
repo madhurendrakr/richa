@@ -36,7 +36,7 @@ const ContactForm = () => {
       <h1 className="text-2xl font-bold text-indigo-800 mb-6">Contact us</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4 shadow-lg">
-          <label htmlFor="name" className="block text-gray-700">
+          <label htmlFor="name" className="block font-bold text-gray-700">
             Name:
           </label>
           <input
@@ -50,7 +50,7 @@ const ContactForm = () => {
           />
         </div>
         <div className="mb-4 shadow-lg">
-          <label htmlFor="phone" className="block text-gray-700">
+          <label htmlFor="phone" className="block font-bold text-gray-700">
             Phone:
           </label>
           <input
@@ -64,7 +64,7 @@ const ContactForm = () => {
           />
         </div>
         <div className="mb-4 shadow-lg">
-          <label htmlFor="email" className="block text-gray-700">
+          <label htmlFor="email" className="block font-bold text-gray-700">
             Email:
           </label>
           <input
@@ -79,7 +79,7 @@ const ContactForm = () => {
         </div>
 
         <div className="mb-6 shadow-lg">
-          <label htmlFor="message" className="block text-gray-700">
+          <label htmlFor="message" className="block font-bold text-gray-700">
             Message:
           </label>
           <textarea

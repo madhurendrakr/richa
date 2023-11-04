@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from 'cors'
 import { register,login, getAllUsers } from "./controllers/authController.js";
-import { productAdd,productApprove ,getAllProducts, getProduct, getProductByUser} from "./controllers/productAddController.js";
+import { productAdd,productApprove ,getAllProducts, getProduct, getProductByUser, changeApprovalStatus} from "./controllers/productAddController.js";
 import { mailSender } from "./controllers/mailController.js";
 dotenv.config();
 
@@ -18,6 +18,7 @@ app.patch('/approveProduct',productApprove)
 app.get('/getAllProducts',getAllProducts)
 app.get('/getAllUsers',getAllUsers)
 app.post('/getProductByUser',getProductByUser)
+app.post('/changeApprovalStatus',changeApprovalStatus)
 
 app.post('/sendMail',mailSender)
 

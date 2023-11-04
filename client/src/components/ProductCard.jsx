@@ -14,7 +14,7 @@ const ProductCard = ({ name, desc, price,category,image,id }) => {
   // const queryString = new URLSearchParams(data).toString()
 
   let formalDesc = desc;
-  if (desc.length > 50) formalDesc = desc.slice(0, 50) + "...";
+  if (desc.length > 37) formalDesc = desc.slice(0, 30) + "...";
   else formalDesc = desc;
   return (
     <div
@@ -24,7 +24,7 @@ const ProductCard = ({ name, desc, price,category,image,id }) => {
       <div className="border border-black rounded-lg">
         <div className="">
           <img
-            className="w-full h-60 object-cover rounded-t-lg"
+            className="w-full h-60 object-top rounded-t-lg"
             src={image}
             alt=""
           />
@@ -35,12 +35,12 @@ const ProductCard = ({ name, desc, price,category,image,id }) => {
               <h1 className="text-lg font-bold">{name}</h1>
               <h1 className="text-green-600 font-bold text-xl">${price}.00</h1>
             </div>
-            <h1>{formalDesc}</h1>
+            <h1 className="mb-4 mt-2">{formalDesc}</h1>
             <div className="flex justify-between">
-              <button className="bg-blue-500 py-1 px-2 text-black rounded-sm">
+              <button className="bg-blue-500 py-1 rounded-lg px-2 text-black">
                 More Details
               </button>
-              <button className="bg-black py-1 px-2 rounded-sm text-white">
+              <button className="bg-black py-1 px-2 rounded-lg text-white">
                 Add to cart
               </button>
             </div>

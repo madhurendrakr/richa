@@ -18,6 +18,20 @@ const AdminProductsPage = () => {
     fetchData();
   }, []);
 
+  const changeProductApproval = (id) => {
+    axios
+      .post("http://localhost:3000/changeApprovalStatus", {
+        id: id,
+      })
+      .then((res) => {
+        console.log(res.data);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       {data &&
@@ -28,7 +42,11 @@ const AdminProductsPage = () => {
           >
             {/* Image as a card */}
             <div className="max-w-[160px] bg-white rounded-lg shadow-lg mb-3 lg:mb-0">
-              <img className="w-full rounded-lg h-auto" src={item.image} alt={item.name} />
+              <img
+                className="w-full rounded-lg h-auto"
+                src={item.image}
+                alt={item.name}
+              />
             </div>
             {/* Name, Description, Category, Price */}
             <div className="flex flex-col flex-1 lg:mx-4">
@@ -42,13 +60,13 @@ const AdminProductsPage = () => {
             {/* Approval */}
             <div className="flex items-center justify-center lg:ml-4">
               {item.isApproved ? (
-                <h1 className="text-white cursor-pointer hover:scale-105 bg-green-500 rounded-full px-2 py-1 text-sm">
+                <button onClick={()=>changeProductApproval(item._id)} className="text-white cursor-pointer hover:scale-105 bg-green-500 rounded-full px-2 py-1 text-sm">
                   Approved
-                </h1>
+                </button>
               ) : (
-                <h1 className="text-white bg-red-600 cursor-pointer hover:scale-105 rounded-full px-2 py-1 text-sm">
+                <button onClick={()=>changeProductApproval(item._id)} className="text-white bg-red-600 cursor-pointer hover:scale-105 rounded-full px-2 py-1 text-sm">
                   Not Approved
-                </h1>
+                </button>
               )}
             </div>
           </div>

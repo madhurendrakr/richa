@@ -68,4 +68,17 @@ export const productApprove = async (req, res) => {
       return res.status(404).json({error:"Product not found"})
     }
   }
+
+  export const changeApprovalStatus =async(req,res)=>{
+    try {
+      const {id} = req.body
+      const product = await Product.findById(id);
+      if(!product) return res.status(404).json({error:"Not Found"});
+      product.isApproved = !(product.isApproved)
+      await product.save();
+      return res.status(200).json({message:"Done"})
+    } catch (error) {
+      return res.status(404).json({error:"Not Found"});
+    }
+  }
   

@@ -14,7 +14,9 @@ const HomeScreen = () => {
   const navigate = useNavigate();
   const bookFilter = () => {
     if (!bookSelected && productData) {
-      const filteredArray = productData.filter(item=>item.category=="Books")
+      const filteredArray = productData.filter(
+        (item) => item.category == "Books"
+      );
     }
     setBookSelected((prev) => !prev);
   };
@@ -126,19 +128,21 @@ const HomeScreen = () => {
         </div>
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {productData &&
-            productData.map((item, ind) => (
-              <div className="mt-10" key={ind}>
-                <ProductCard
-                  key={ind}
-                  name={item.name}
-                  desc={item.description}
-                  price={item.price}
-                  category={item.category}
-                  image={item.image}
-                  id={item._id}
-                />
-              </div>
-            ))}
+            productData
+              .filter((item) => item.isApproved) // Filter out products with isApproved === true
+              .map((item, ind) => (
+                <div className="mt-10" key={ind}>
+                  <ProductCard
+                    key={ind}
+                    name={item.name}
+                    desc={item.description}
+                    price={item.price}
+                    category={item.category}
+                    image={item.image}
+                    id={item._id}
+                  />
+                </div>
+              ))}
         </div>
       </div>
       <Footer />
