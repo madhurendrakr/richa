@@ -10,6 +10,8 @@ import Layout from "./Layout";
 import ContactForm from "./screens/ContactForm";
 import About from "./screens/About";
 import ProfilePage from "./screens/ProfilePage";
+import AdminProductsPage from "./screens/AdminProductsPage";
+import AdminUsersProduct from "./screens/AdminUsersProduct";
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<HomeScreen />} />
+          <Route path="/adminProduct" element={<AdminProductsPage />} />
+          <Route path="/adminUsers" element={<AdminUsersProduct />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactForm />} />

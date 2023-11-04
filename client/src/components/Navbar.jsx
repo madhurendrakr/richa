@@ -39,7 +39,7 @@ const navigate = useNavigate()
           Search
         </button>
       </div>
-      <div className="flex font-bold text-2xl gap-4">
+      <div className="hidden md:flex font-bold text-2xl gap-4">
         <Link
           to={"/"}
           className={`hover:underline ${
