@@ -12,21 +12,85 @@ import About from "./screens/About";
 import ProfilePage from "./screens/ProfilePage";
 import AdminProductsPage from "./screens/AdminProductsPage";
 import AdminUsersProduct from "./screens/AdminUsersProduct";
+import PrivateRoute from "./PrivateRoute";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/adminProduct" element={<AdminProductsPage />} />
-          <Route path="/adminUsers" element={<AdminUsersProduct />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<ContactForm />} />
-          <Route path="/adminPage" element={<AdminPage />} />
-          <Route path="/addProduct" element={<ProductUploadPage />} />
-          <Route path="/product/:data" element={<ProductDetailsScreen />} />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <HomeScreen />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/adminProduct"
+            element={
+              <PrivateRoute>
+                <AdminProductsPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/adminUsers"
+            element={
+              <PrivateRoute>
+                <AdminUsersProduct />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <ProfilePage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <PrivateRoute>
+                <About />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <PrivateRoute>
+                <ContactForm />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/adminPage"
+            element={
+              <PrivateRoute>
+                <AdminPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/addProduct"
+            element={
+              <PrivateRoute>
+                <ProductUploadPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/product/:data"
+            element={
+              <PrivateRoute>
+                <ProductDetailsScreen />
+              </PrivateRoute>
+            }
+          />
         </Route>
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegistrationScreen />} />
