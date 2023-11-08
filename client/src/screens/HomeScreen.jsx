@@ -107,7 +107,7 @@ const HomeScreen = () => {
           </div>
           <div className="border border-black bg-pink-500 text-white px-5 py-2 rounded-lg h-48">
             <div className="flex flex-col gap-1">
-              <h1 className="text-2xl whitespace-nowrap">Filter By Availabality</h1>
+              <h1 className="text-2xl whitespace-nowrap">Filter By Availability</h1>
               <hr className="border-t-2 border-white" />
             </div>
             <div>
