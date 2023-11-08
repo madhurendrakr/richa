@@ -11,6 +11,10 @@ const UserSchema = Schema({
         required:true,
         unique:true
     },
+    phonenumber:{
+        type:String,
+        unique:true
+    },
     password:{
         type:String,
         required:true

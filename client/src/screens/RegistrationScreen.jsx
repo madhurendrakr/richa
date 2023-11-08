@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 const RegistrationScreen = () => {
   const navigate = useNavigate()
   const [name, setName] = useState("");
+  const [phonenumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
@@ -34,6 +35,7 @@ const RegistrationScreen = () => {
           name: name,
           password: password,
           email: email,
+          phonenumber:phonenumber
         })
         .then((res) => {
           // Handle the response from the server if needed.
@@ -83,6 +85,14 @@ const RegistrationScreen = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter Your Email"
+            className="border border-black px-2 py-1 text-2xl rounded-lg"
+          />
+          <input
+            required
+            type="text"
+            value={phonenumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            placeholder="Enter Your Phone"
             className="border border-black px-2 py-1 text-2xl rounded-lg"
           />
           {/* Password */}

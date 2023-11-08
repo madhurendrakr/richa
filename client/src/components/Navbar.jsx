@@ -13,7 +13,7 @@ const navigate = useNavigate()
     navigate('/login')
   }
   return (
-    <div className="flex px-5 py-2 justify-between border-b-2 border-black">
+    <div className="flex px-5 py-2 border-l-green-300 justify-between border-b-2 border-black">
       <div className="flex items-center gap-3">
         <svg
           xmlns="http://www.w3.org/2000/svg"

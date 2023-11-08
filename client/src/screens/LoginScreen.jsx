@@ -27,7 +27,7 @@ const LoginScreen = () => {
           email,
           password,
         })
-        .then((res) => {
+        .then(async (res) => {
           console.log(res.data);
           const jsonData = {
             email: res.data.data.email,
@@ -42,7 +42,7 @@ const LoginScreen = () => {
           } else navigate("/");
         })
         .catch((err) => {
-          // console.log(err.data);
+          console.log(err);
           setError("Wrong Password or Invalid Email");
         });
     }
@@ -125,7 +125,12 @@ const LoginScreen = () => {
           </button>
 
           <div>
-            <h1 className="text-center">New user ? <Link to={'/register'} className="text-blue-600 font-bold">Sign up</Link></h1>
+            <h1 className="text-center">
+              New user ?{" "}
+              <Link to={"/register"} className="text-blue-600 font-bold">
+                Sign up
+              </Link>
+            </h1>
           </div>
         </form>
       </div>

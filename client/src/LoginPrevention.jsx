@@ -6,8 +6,8 @@ const PrivateRoute = ({children}) => {
    const data = localStorage.getItem("user_data")
     let location = useLocation();
     // const user = useSelector((state)=>state.user);
-    if(!data){
-        return <Navigate to="/login" state={{ from: location}} replace />
+    if(data){
+        return <Navigate to="/" state={{ from: location}} replace />
     }
   return (
     children

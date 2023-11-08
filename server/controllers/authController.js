@@ -6,13 +6,13 @@ export const register = async (req, res) => {
   if (req.method !== "POST") {
     return res.status(400).json({ error: "Bad Request" });
   }
-  const { name, email, password } = req.body;
+  const { name, email, password,phonenumber } = req.body;
   const exUser = await User.findOne({ email });
   console.log(exUser);
   if (exUser !== null) {
     return res.status(400).json({ error: "Email already exists" });
   }
-  const newUser = await User.create({ name, email, password });
+  const newUser = await User.create({ name, email, phonenumber,password });
   return res.status(201).json({ message: "User Created", data: newUser });
 };
 

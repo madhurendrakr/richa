@@ -68,13 +68,13 @@ const HomeScreen = () => {
       <div className="flex">
         {/* Filter Section */}
         <div className="px-10 py-10">
-          <div className="border border-black px-4 py-3 rounded-lg mb-2">
+          <div className="border border-black text-white bg-pink-600 px-4 py-3 rounded-lg mb-2">
             <div className="flex flex-col gap-1">
-              <h1 className="text-3xl">Filter By Category</h1>
-              <hr className="border-t-2 border-black" />
+              <h1 className="text-2xl whitespace-nowrap">Filter By Category</h1>
+              <hr className="border-t-2 border-white" />
             </div>
             <div>
-              <div className="flex gap-2">
+              <div className="flex gap-1">
                 <input
                   type="checkbox"
                   name="Books"
@@ -83,43 +83,43 @@ const HomeScreen = () => {
                 />
                 <h1>Books</h1>
               </div>
-              <div className="flex">
+              <div className="flex gap-1" >
                 <input type="checkbox" />
                 <h1>Electronics</h1>
               </div>
-              <div className="flex">
+              <div className="flex gap-1">
                 <input type="checkbox" />
                 <h1>Item1</h1>
               </div>
-              <div className="flex">
+              <div className="flex gap-1">
                 <input type="checkbox" />
                 <h1>Item2</h1>
               </div>
-              <div className="flex">
+              <div className="flex gap-1">
                 <input type="checkbox" />
                 <h1>Item3</h1>
               </div>
-              <div className="flex">
+              <div className="flex gap-1">
                 <input type="checkbox" />
                 <h1>Item4</h1>
               </div>
             </div>
           </div>
-          <div className="border border-black px-5 py-2 rounded-lg">
+          <div className="border border-black bg-pink-500 text-white px-5 py-2 rounded-lg h-48">
             <div className="flex flex-col gap-1">
-              <h1 className="text-3xl">Filter By Availabality</h1>
-              <hr className="border-t-2 border-black" />
+              <h1 className="text-2xl whitespace-nowrap">Filter By Availabality</h1>
+              <hr className="border-t-2 border-white" />
             </div>
             <div>
-              <div className="flex">
+              <div className="flex gap-1">
                 <input type="checkbox" />
                 <h1>To sell</h1>
               </div>
-              <div className="flex">
+              <div className="flex gap-1">
                 <input type="checkbox" />
                 <h1>To rent</h1>
               </div>
-              <div className="flex">
+              <div className="flex gap-1">
                 <input type="checkbox" />
                 <h1>None</h1>
               </div>
