@@ -6,13 +6,13 @@ export const register = async (req, res) => {
   if (req.method !== "POST") {
     return res.status(400).json({ error: "Bad Request" });
   }
-  const { name, email, password,phonenumber } = req.body;
+  const { name, email, password, phonenumber } = req.body;
   const exUser = await User.findOne({ email });
   console.log(exUser);
   if (exUser !== null) {
     return res.status(400).json({ error: "Email already exists" });
   }
-  const newUser = await User.create({ name, email, phonenumber,password });
+  const newUser = await User.create({ name, email, phonenumber, password });
   return res.status(201).json({ message: "User Created", data: newUser });
 };
 
@@ -32,6 +32,19 @@ export const getAllUsers = async (req, res) => {
     const users = await User.find();
     if (!users) return res.status(200).json({ error: "Users not found" });
     return res.status(200).json({ data: users });
+  } catch (error) {
+    return res.status(200).json({ error: "Users not found" });
+  }
+};
+
+export const makeAdmin = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const user = await User.findById(id);
+    if (!user) return res.status(200).json({ error: "Users not found" });
+    user.isAdmin = !user.isAdmin;
+    await user.save();
+    return res.status(200).json({ message: "Done" });
   } catch (error) {
     return res.status(200).json({ error: "Users not found" });
   }

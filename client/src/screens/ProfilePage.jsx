@@ -38,6 +38,7 @@ const ProfilePage = () => {
       {userProducts &&
         userProducts.map((item, key) => (
           <ProfilePageProductCard
+          id={item._id}
             category={item.category}
             desc={item.description}
             image={item.image}

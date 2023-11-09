@@ -14,6 +14,19 @@ const AdminUsersProduct = () => {
         console.log(error);
       });
   };
+  const changeAdminStatus = (id) => {
+    axios
+      .post("http://localhost:3000/changeAdminStatus", {
+        id: id,
+      })
+      .then((res) => {
+        alert("Administration Status Changed!");
+        window.location.reload();
+      })
+      .catch((err) => {
+        alert("Could not complete the request");
+      });
+  };
   useEffect(() => {
     fetchData();
   }, []);
@@ -50,6 +63,22 @@ const AdminUsersProduct = () => {
                 <p>
                   ID: <span className="font-bold">{item._id}</span>
                 </p>
+                <div className="flex justify-end">
+                  {item.phonenumber && (
+                    <p className="flex-1">
+                      phone:{" "}
+                      <span className="font-bold">{item.phonenumber}</span>
+                    </p>
+                  )}
+                  <button
+                    onClick={(_) => changeAdminStatus(item._id)}
+                    className={`text-end hover:scale-110 hover:text-white hover:outline-1 hover:outline-slate-950 transition duration-75 ease-in-out px-2 rounded-full ${
+                      item.isAdmin ? "bg-green-500" : "bg-yellow-500"
+                    }`}
+                  >
+                    {item.isAdmin === true ? "Admin" : "User"}
+                  </button>
+                </div>
               </div>
             ))}
         </div>

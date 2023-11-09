@@ -12,7 +12,9 @@ const categories = [
 ];
 
 const ProductUploadPage = () => {
-  const navigate = useNavigate()
+  const userId = localStorage.getItem("user_data");
+  const userIdParsed = JSON.parse(userId);
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [imageLink, setImageLink] = useState("");
@@ -81,10 +83,11 @@ const ProductUploadPage = () => {
         price: price,
         category: category,
         image: imageLink,
-        addedBy: "653f7466d8909381f54c8850",
+        addedBy: userIdParsed.id,
       })
       .then((res) => {
-        navigate('/')
+        alert("Product has been added Successfully!");
+        navigate("/");
         console.log(res.data);
       })
       .catch((err) => {
