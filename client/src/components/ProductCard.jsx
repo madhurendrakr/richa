@@ -18,39 +18,40 @@ const ProductCard = ({ name, desc, price,category,image,id }) => {
   else formalDesc = desc;
   return (
     <div
-      onClick={() => navigate(`/product/${id}`)}
-      className="flex m-3 hover:scale-105 cursor-pointer"
-    >
-      <div className="border border-black rounded-lg">
-        <div className="">
-          <img
-            className="w-full h-60 object-top rounded-t-lg"
-            src={image}
-            alt=""
-          />
-        </div>
-        <div className="flex bg-gray-300 pb-3 px-3 rounded-b-lg">
-          <div className="w-60">
-            <div className="flex justify-between mt-3">
-              <h1 className="text-lg font-bold">{name}</h1>
-              <h1 className="text-green-600 font-bold text-xl">${price}.00</h1>
-            </div>
-            <h1 className="mb-4 mt-2 h-8 text-sm">{formalDesc}</h1>
-            <div className="flex mb-2 mt-4 font-bold">
-              Availibility : ........
-            </div>
-            <div className="flex justify-between">
-              <button className="bg-blue-500 py-1 rounded-lg px-2 text-black">
-                More Details
-              </button>
-              <button className="bg-black py-1 px-2 rounded-lg text-white">
-                Add to cart
-              </button>
-            </div>
+    onClick={() => navigate(`/product/${id}`)}
+    className="flex m-3 hover:scale-105 cursor-pointer"
+  >
+    <div className="border border-black rounded-lg w-full md:w-72">
+      <div className="">
+        <img
+          className="w-full h-60 object-top rounded-t-lg"
+          src={image}
+          alt=""
+        />
+      </div>
+      <div className="flex bg-gray-300 pb-3 px-3 rounded-b-lg">
+        <div className="w-full md:w-60">
+          <div className="flex justify-between mt-3">
+            <h1 className="text-lg font-bold">{name}</h1>
+            <h1 className="text-green-600 font-bold text-xl">${price}.00</h1>
+          </div>
+          <h1 className="mb-4 mt-2 h-8 text-sm">{formalDesc}</h1>
+          <div className="flex mb-2 mt-4 font-bold">
+            Availability: ........
+          </div>
+          <div className="flex justify-between">
+            <button className="bg-blue-500 py-1 rounded-lg px-2 text-black">
+              More Details
+            </button>
+            <button className="bg-black py-1 px-2 rounded-lg text-white">
+              Add to cart
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  
   );
 };
 

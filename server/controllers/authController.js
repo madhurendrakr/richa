@@ -49,3 +49,17 @@ export const makeAdmin = async (req, res) => {
     return res.status(200).json({ error: "Users not found" });
   }
 };
+
+export const getEmailAndPhoneByProductId = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const userDetails = await User.findById(id);
+    if (userDetails === null)
+      return res.status(404).json({ error: "Not Found" });
+    return res
+      .status(200)
+      .json({ phone: userDetails.phonenumber, email: userDetails.email });
+  } catch (error) {
+    return res.status(404).json({ error: "Not Found" });
+  }
+};

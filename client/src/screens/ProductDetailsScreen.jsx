@@ -8,6 +8,9 @@ const ProductDetailsScreen = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [availbilty, setavailibilty] = useState(true);
   const [addedTocart, setaddedTocart] = useState(false);
+  const [phoneNumber,setPhoneNumber] = useState(null);
+  const [isCallTapped,setIsCallTapped] = useState(false)
+  const [email,setEmail] = useState(null);
   const toggleOptions = () => {
     setShowOptions(!showOptions);
   };
@@ -18,16 +21,37 @@ const ProductDetailsScreen = () => {
   const toggleadded = () => {
     setaddedTocart(!addedTocart);
   };
+  const handleEmailClick = (emailAddress) => {
+    const subject = 'Hello';
+    const body = 'I wanted to say...';
 
+    const gmailComposeUrl = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Open a new tab with the Gmail compose window
+    window.open(gmailComposeUrl, '_blank');
+  };
   const [productData, setProductData] = useState(null);
+  const getUserData = (id)=>{
+    // console.log(id);
+    axios.post("http://localhost:3000/getEmailAndPhoneById",{
+      id,
+    }).then(res=>{
+      // console.log(res.data);
+      setEmail(res.data.email)  
+      setPhoneNumber(res.data.phone || null)
+    }).catch(err=>{
+      console.log(err);
+    })
+  }
   const getProductData = (id) => {
     axios
       .post("http://localhost:3000/getProduct", {
         id,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setProductData(res.data.product);
+        getUserData(res.data?.product?.addedBy)
       })
       .catch((err) => {
         console.log(err);
@@ -39,7 +63,9 @@ const ProductDetailsScreen = () => {
   }, []);
 
   // console.log(params.data);
-
+  const showpopup = () => {
+    alert(phoneNumber)
+  };
   return (
     <div>
       {/* <Navbar /> */}
@@ -88,7 +114,7 @@ const ProductDetailsScreen = () => {
 
             <button
               onClick={toggleadded}
-              className= { `flex-1 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-black text-lg py-1  font-semibold ${
+              className={`flex-1 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-black text-lg py-1  font-semibold ${
                 addedTocart ? "text-black" : "text-white"
               }`}
             >
@@ -106,6 +132,7 @@ const ProductDetailsScreen = () => {
             {showOptions && (
               <div className="flex">
                 <button
+                onClick={()=>handleEmailClick(email)}
                   className="flex gap-2 justify-center items-center
                    flex-1 uppercase rounded-lg mt-1 mr-1 bg-orange-400
                  hover:bg-slate-600 text-white text-lg py-1"
@@ -127,6 +154,7 @@ const ProductDetailsScreen = () => {
                   Email
                 </button>
                 <button
+                  onClick={()=>setIsCallTapped((prev)=>!prev)}
                   className="flex-1 uppercase rounded-lg mt-1 ml-1 flex justify-center items-center gap-1
                  bg-pink-600 hover:bg-slate-600 text-white text-lg py-1"
                 >
@@ -144,7 +172,7 @@ const ProductDetailsScreen = () => {
                       d="M20.25 3.75v4.5m0-4.5h-4.5m4.5 0l-6 6m3 12c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 014.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 00-.38 1.21 12.035 12.035 0 007.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 011.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 01-2.25 2.25h-2.25z"
                     />
                   </svg>
-                  Call
+                  {isCallTapped ? phoneNumber : "Call"}
                 </button>
                 {/* Add more options as needed */}
               </div>

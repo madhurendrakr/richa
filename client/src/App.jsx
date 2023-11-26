@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import RegistrationScreen from "./screens/RegistrationScreen";
 import LoginScreen from "./screens/LoginScreen";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -15,15 +15,21 @@ import AdminUsersProduct from "./screens/AdminUsersProduct";
 import PrivateRoute from "./PrivateRoute";
 
 const App = () => {
+  const [searchTerm, setSearchTerm] = useState(null);
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route
+          path="/"
+          element={
+            <Layout searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          }
+        >
           <Route
             path="/"
             element={
               <PrivateRoute>
-                <HomeScreen />
+                <HomeScreen searchTerm={searchTerm} />
               </PrivateRoute>
             }
           />
