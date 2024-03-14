@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cors());
 app.post("/register", register);
 app.post("/login", login);
-app.post("/getEmailAndPhoneById",getEmailAndPhoneByProductId)
+app.post("/getEmailAndPhoneById", getEmailAndPhoneByProductId);
 app.post("/addProduct", productAdd);
 app.post("/getProduct", getProduct);
 app.patch("/approveProduct", productApprove);

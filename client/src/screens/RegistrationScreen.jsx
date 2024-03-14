@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const RegistrationScreen = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
@@ -35,7 +35,7 @@ const RegistrationScreen = () => {
           name: name,
           password: password,
           email: email,
-          phonenumber:phonenumber
+          phonenumber: phonenumber,
         })
         .then((res) => {
           // Handle the response from the server if needed.
@@ -64,9 +64,9 @@ const RegistrationScreen = () => {
 
   return (
     <div className="flex justify-center items-center h-screen gap-8 bg-blue-700">
-      <div className="text-8xl text-white font-bold">
-        Beautiful
-        <br /> Sign Up Form
+      <div className="text-8xl text-white font-bold gap-x-7">
+        Sign Up
+        <br /> Form
       </div>
       <div className="bg-white px-14 py-8 rounded-2xl">
         <h1 className="font-bold text-5xl mb-12">Registration</h1>
@@ -202,12 +202,18 @@ const RegistrationScreen = () => {
             <input type="checkbox" required />{" "}
             <h1>I accept all terms & conditions.</h1>
           </div>
-          <button type="submit" className="bg-blue-500 rounded-lg text-white py-2">
+          <button
+            type="submit"
+            className="bg-blue-500 rounded-lg text-white py-2"
+          >
             Register Now
           </button>
           <h1 className="mb-4 text-center">
             Already have an account?{" "}
-            <Link to={"/login"} className="text-blue-600 font-bold cursor-pointer">
+            <Link
+              to={"/login"}
+              className="text-blue-600 font-bold cursor-pointer"
+            >
               Login now
             </Link>
           </h1>

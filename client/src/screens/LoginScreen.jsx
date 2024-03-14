@@ -50,7 +50,6 @@ const LoginScreen = () => {
   return (
     <div className="flex justify-center items-center h-screen gap-80 bg-blue-700">
       <div className="text-8xl text-white font-bold hidden md:flex">
-        Beautiful
         <br /> Login
         <br /> Form
       </div>
