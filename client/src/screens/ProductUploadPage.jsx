@@ -3,6 +3,8 @@ import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectMode } from "../../modeSlice";
 const categories = [
   "Clothing",
   "Electronics",
@@ -12,6 +14,7 @@ const categories = [
 ];
 
 const ProductUploadPage = () => {
+  const darkMode = useSelector(selectMode);
   const userId = localStorage.getItem("user_data");
   const userIdParsed = JSON.parse(userId);
   const navigate = useNavigate();
@@ -96,27 +99,28 @@ const ProductUploadPage = () => {
   };
 
   return (
-    <div className="w-full max-w-md m-auto p-4 relative">
+    <div
+      className={`w-full max-w-md m-auto p-4 relative transition-colors duration-500 ${
+        darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+      }`}
+    >
       {isUploading && (
-        <div
-          className="w-screen flex justify-center items-center
-       fixed top-0 bottom-0 left-0 h-screen
-        bg-gray-500 opacity-50"
-        ></div>
+        <div className="w-screen flex justify-center items-center fixed top-0 bottom-0 left-0 h-screen bg-gray-500 opacity-50"></div>
       )}
       <form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className={`shadow-md rounded px-8 pt-6 pb-8 mb-4 transition-colors duration-500 ${
+          darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900"
+        }`}
         onSubmit={handleSubmit}
       >
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="name"
-          >
+          <label className="block text-sm font-bold mb-2" htmlFor="name">
             Name
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className={`shadow appearance-none border rounded w-full py-2 px-3 ${
+              darkMode ? "text-white bg-gray-700" : "text-gray-700 bg-white"
+            } leading-tight focus:outline-none focus:shadow-outline transition-colors duration-500`}
             id="name"
             type="text"
             placeholder="Product Name"
@@ -125,14 +129,13 @@ const ProductUploadPage = () => {
           />
         </div>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="description"
-          >
+          <label className="block text-sm font-bold mb-2" htmlFor="description">
             Description
           </label>
           <textarea
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className={`shadow appearance-none border rounded w-full py-2 px-3 ${
+              darkMode ? "text-white bg-gray-700" : "text-gray-700 bg-white"
+            } leading-tight focus:outline-none focus:shadow-outline transition-colors duration-500`}
             id="description"
             placeholder="Product Description"
             value={description}
@@ -140,14 +143,13 @@ const ProductUploadPage = () => {
           />
         </div>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="price"
-          >
+          <label className="block text-sm font-bold mb-2" htmlFor="price">
             Price
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className={`shadow appearance-none border rounded w-full py-2 px-3 ${
+              darkMode ? "text-white bg-gray-700" : "text-gray-700 bg-white"
+            } leading-tight focus:outline-none focus:shadow-outline transition-colors duration-500`}
             id="price"
             type="number"
             placeholder="Product Price"
@@ -156,14 +158,13 @@ const ProductUploadPage = () => {
           />
         </div>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="category"
-          >
+          <label className="block text-sm font-bold mb-2" htmlFor="category">
             Category
           </label>
           <select
-            className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-3 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
+            className={`block appearance-none w-full border rounded ${
+              darkMode ? "text-white bg-gray-700" : "text-gray-700 bg-white"
+            } border-gray-300 hover:border-gray-400 px-3 py-2 pr-8 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-500`}
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
@@ -177,14 +178,13 @@ const ProductUploadPage = () => {
           </select>
         </div>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="image"
-          >
+          <label className="block text-sm font-bold mb-2" htmlFor="image">
             Image
           </label>
           <input
-            className="appearance-none block w-full bg-white text-gray-700 border border-gray-300 hover:border-gray-400 px-3 py-2 rounded leading-tight focus:outline-none focus:shadow-outline"
+            className={`appearance-none block w-full ${
+              darkMode ? "text-white bg-gray-700" : "text-gray-700 bg-white"
+            } border border-gray-300 hover:border-gray-400 px-3 py-2 rounded leading-tight focus:outline-none focus:shadow-outline transition-colors duration-500`}
             id="image"
             type="file"
             accept="image/*"
@@ -193,7 +193,9 @@ const ProductUploadPage = () => {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover-bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+              darkMode ? "dark-mode-button" : ""
+            } transition-colors duration-500`}
             type="submit"
           >
             Create Product

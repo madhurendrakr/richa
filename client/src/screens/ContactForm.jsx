@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { selectMode } from "../../modeSlice";
+
 const ContactForm = () => {
+  const darkMode = useSelector(selectMode);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,7 +27,7 @@ const ContactForm = () => {
         mes: formData.message,
       })
       .then((res) => {
-        alert("Message Sent!")
+        alert("Message Sent!");
         console.log(res.data);
       })
       .catch((err) => {
@@ -32,11 +36,11 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-gray-100 p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 rounded-lg shadow-md">
-      <h1 className="text-2xl font-bold text-indigo-800 mb-6">Contact us</h1>
+    <div className={`bg-${darkMode ? "gray-900" : "gray-100"} p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 rounded-lg shadow-md`}>
+      <h1 className={`text-2xl font-bold text-${darkMode ? "white" : "indigo-800"} mb-6`}>Contact us</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4 shadow-lg">
-          <label htmlFor="name" className="block font-bold text-gray-700">
+          <label htmlFor="name" className={`block font-bold text-${darkMode ? "white" : "gray-700"}`}>
             Name:
           </label>
           <input
@@ -46,11 +50,11 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-indigo-500"
+            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-${darkMode ? "white" : "indigo-500"}`}
           />
         </div>
         <div className="mb-4 shadow-lg">
-          <label htmlFor="phone" className="block font-bold text-gray-700">
+          <label htmlFor="phone" className={`block font-bold text-${darkMode ? "white" : "gray-700"}`}>
             Phone:
           </label>
           <input
@@ -60,11 +64,11 @@ const ContactForm = () => {
             value={formData.phone}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-indigo-500"
+            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-${darkMode ? "white" : "indigo-500"}`}
           />
         </div>
         <div className="mb-4 shadow-lg">
-          <label htmlFor="email" className="block font-bold text-gray-700">
+          <label htmlFor="email" className={`block font-bold text-${darkMode ? "white" : "gray-700"}`}>
             Email:
           </label>
           <input
@@ -74,12 +78,12 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-indigo-500"
+            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-${darkMode ? "white" : "indigo-500"}`}
           />
         </div>
 
         <div className="mb-6 shadow-lg">
-          <label htmlFor="message" className="block font-bold text-gray-700">
+          <label htmlFor="message" className={`block font-bold text-${darkMode ? "white" : "gray-700"}`}>
             Message:
           </label>
           <textarea
@@ -89,14 +93,14 @@ const ContactForm = () => {
             value={formData.message}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-indigo-500"
+            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-${darkMode ? "white" : "indigo-500"}`}
           />
         </div>
 
         <div>
           <button
             type="submit"
-            className="bg-indigo-600 text-white shadow-lg py-2 px-4 rounded-lg hover:bg-indigo-700"
+            className={`bg-${darkMode ? "indigo-600" : "indigo-600"} text-${darkMode ? "white" : "white"} shadow-lg py-2 px-4 rounded-lg hover:bg-indigo-700`}
           >
             Submit
           </button>
