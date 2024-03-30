@@ -22,7 +22,11 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
   };
 
   return (
-    <div className={`flex px-5 py-2 justify-between border-b-2 border-black transition-colors duration-500 ${darkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
+    <div
+      className={`flex px-5 py-2 justify-between border-b-2 border-black transition-colors duration-500 ${
+        darkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+      }`}
+    >
       <div className="flex items-center gap-3">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,17 +47,25 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           type="text"
-          className={`border px-2 py-1 text-2xl w-80 border-gray-500 rounded-tl-lg rounded-bl-lg ${darkMode ? "bg-gray-800 text-white" : "bg-white text-black"}`}
+          className={`border px-2 py-1 text-2xl w-80 border-gray-500 rounded-tl-lg rounded-bl-lg ${
+            darkMode ? "bg-gray-800 text-white" : "bg-white text-black"
+          }`}
           placeholder="Search"
         />
-        <button className={`text-2xl px-2 py-1 rounded-tr-lg rounded-br-lg ${darkMode ? "bg-gray-800 text-white" : "bg-black text-white"}`}>
+        <button
+          className={`text-2xl px-2 py-1 rounded-tr-lg rounded-br-lg ${
+            darkMode ? "bg-gray-800 text-white" : "bg-black text-white"
+          }`}
+        >
           Search
         </button>
       </div>
       <div className="hidden md:flex font-bold text-2xl gap-4">
         <button
           onClick={toggleModeHandler}
-          className={`rounded-full border border-black w-8 h-8 justify-center flex items-center ${darkMode ? 'bg-white text-black' : 'bg-cyan-800 text-white'}`}
+          className={`rounded-full border border-black w-8 h-8 justify-center flex items-center ${
+            darkMode ? "bg-white text-black" : "bg-cyan-800 text-white"
+          }`}
         >
           {darkMode ? (
             <svg
@@ -87,31 +99,60 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
             </svg>
           )}
         </button>
-
+        <Link to={"/messages"} className="w-8 h-8 flex items-center justify-center p-1 bg-gray-400 rounded-full">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              fillRule="evenodd"
+              d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97-1.94.284-3.916.455-5.922.505a.39.39 0 0 0-.266.112L8.78 21.53A.75.75 0 0 1 7.5 21v-3.955a48.842 48.842 0 0 1-2.652-.316c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97Z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </Link>
         <Link
           to={"/"}
-          className={`hover:underline ${pathname === "/" ? "underline" : "no-underline"} cursor-pointer hover:transition duration-75 ease-in-out ${darkMode ? "text-white" : "text-black"}`}
+          className={`hover:underline ${
+            pathname === "/" ? "underline" : "no-underline"
+          } cursor-pointer hover:transition duration-75 ease-in-out ${
+            darkMode ? "text-white" : "text-black"
+          }`}
         >
           Home
         </Link>
         <h1>|</h1>
         <Link
           to={"/contact"}
-          className={`hover:underline ${pathname === "/contact" ? "underline" : "no-underline"} cursor-pointer hover:transition duration-75 ease-in-out ${darkMode ? "text-white" : "text-black"}`}
+          className={`hover:underline ${
+            pathname === "/contact" ? "underline" : "no-underline"
+          } cursor-pointer hover:transition duration-75 ease-in-out ${
+            darkMode ? "text-white" : "text-black"
+          }`}
         >
           Contact
         </Link>
         <h1>|</h1>
         <Link
           to={"/profile"}
-          className={`hover:underline ${pathname === "/profile" ? "underline" : "no-underline"} cursor-pointer hover:transition duration-75 ease-in-out ${darkMode ? "text-white" : "text-black"}`}
+          className={`hover:underline ${
+            pathname === "/profile" ? "underline" : "no-underline"
+          } cursor-pointer hover:transition duration-75 ease-in-out ${
+            darkMode ? "text-white" : "text-black"
+          }`}
         >
           Profile
         </Link>
         <h1>|</h1>
         <Link
           to={"/about"}
-          className={`hover:underline ${pathname === "/about" ? "underline" : "no-underline"} cursor-pointer hover:transition duration-75 ease-in-out ${darkMode ? "text-white" : "text-black"}`}
+          className={`hover:underline ${
+            pathname === "/about" ? "underline" : "no-underline"
+          } cursor-pointer hover:transition duration-75 ease-in-out ${
+            darkMode ? "text-white" : "text-black"
+          }`}
         >
           About
         </Link>
@@ -120,7 +161,9 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
         {/* Logout */}
         <div
           onClick={logout}
-          className={`p-2 rounded-full hover:bg-gray-300 cursor-pointer ${darkMode ? "text-white" : "text-black"}`}
+          className={`p-2 rounded-full hover:bg-gray-300 cursor-pointer ${
+            darkMode ? "text-white" : "text-black"
+          }`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

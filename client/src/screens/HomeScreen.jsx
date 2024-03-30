@@ -62,7 +62,11 @@ const HomeScreen = ({ searchTerm }) => {
   }
 
   return (
-    <div className={`relative transition-colors duration-500 ${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}>
+    <div
+      className={`relative transition-colors duration-500 ${
+        darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+      }`}
+    >
       <div
         onClick={() => navigate("/addProduct")}
         className={`fixed bottom-5 right-5 z-50 cursor-pointer hover:scale-105 p-4 ${
@@ -85,19 +89,29 @@ const HomeScreen = ({ searchTerm }) => {
         </svg>
       </div>
 
+      
+
       <img
         className="w-full h-60 object-cover"
         src="https://img.freepik.com/premium-photo/beautiful-mountain-range-reflects-tranquil-water-generative-ai_188544-9117.jpg?w=1060"
         alt=""
       />
 
-      <h1 className={`text-5xl text-center py-5 mt-5 mx-6 rounded-lg transition-all duration-300 ${darkMode ? "bg-gray-900 text-white" : "bg-gray-200 text-gray-900"}`}>
+      <h1
+        className={`text-5xl text-center py-5 mt-5 mx-6 rounded-lg transition-all duration-300 ${
+          darkMode ? "bg-gray-900 text-white" : "bg-gray-200 text-gray-900"
+        }`}
+      >
         All available items...
       </h1>
 
       <div className="flex flex-col sm:flex-row">
         <div className="sm:px-10 sm:py-10">
-          <div className={`border transition-all duration-300 ${darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900"} px-4 py-3 rounded-lg mb-2`}>
+          <div
+            className={`border transition-all duration-300 ${
+              darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900"
+            } px-4 py-3 rounded-lg mb-2`}
+          >
             <div className="flex flex-col gap-1">
               <h1 className="text-2xl whitespace-nowrap">Filter By Category</h1>
               <hr className="border-t-2 border-white" />
@@ -138,9 +152,15 @@ const HomeScreen = ({ searchTerm }) => {
               </div>
             </div>
           </div>
-          <div className={`border transition-all duration-300 ${darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900"} px-5 py-2 rounded-lg h-48`}>
+          <div
+            className={`border transition-all duration-300 ${
+              darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900"
+            } px-5 py-2 rounded-lg h-48`}
+          >
             <div className="flex flex-col gap-1">
-              <h1 className="text-2xl whitespace-nowrap">Filter By Availability</h1>
+              <h1 className="text-2xl whitespace-nowrap">
+                Filter By Availability
+              </h1>
               <hr className="border-t-2 border-white" />
             </div>
             <div>

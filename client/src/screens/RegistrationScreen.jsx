@@ -198,9 +198,9 @@ const RegistrationScreen = () => {
             </div>
           </div>
           {showError && <h1 className="text-red-600">{error}</h1>}
-          <div className="flex gap-2">
-            <input type="checkbox" required />{" "}
-            <h1>I accept all terms & conditions.</h1>
+          <div className="flex gap-2 items-center">
+            <input className="flex-col items-center justify-center" type="checkbox" required />{" "}
+            <h1>I accept all <Link to={"https://www.termsandconditionsgenerator.com/live.php?token=M5c2ZHrAyaz6Awgex1AxibkY91qkC12p"} className="text-blue-600 font-bold underline cursor-pointer">Terms & Conditions</Link>.</h1>
           </div>
           <button
             type="submit"

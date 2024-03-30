@@ -13,6 +13,7 @@ import ProfilePage from "./screens/ProfilePage";
 import AdminProductsPage from "./screens/AdminProductsPage";
 import AdminUsersProduct from "./screens/AdminUsersProduct";
 import PrivateRoute from "./PrivateRoute";
+import ChatScreen from "./screens/ChatScreen";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState(null);
@@ -30,6 +31,15 @@ const App = () => {
             element={
               <PrivateRoute>
                 <HomeScreen searchTerm={searchTerm} />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/messages"
+            element={
+              <PrivateRoute>
+                <ChatScreen/>
               </PrivateRoute>
             }
           />
