@@ -14,6 +14,7 @@ import AdminProductsPage from "./screens/AdminProductsPage";
 import AdminUsersProduct from "./screens/AdminUsersProduct";
 import PrivateRoute from "./PrivateRoute";
 import ChatScreen from "./screens/ChatScreen";
+import Onboarding from "./screens/Onboarding";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState(null);
@@ -39,7 +40,15 @@ const App = () => {
             path="/messages"
             element={
               <PrivateRoute>
-                <ChatScreen/>
+                <ChatScreen />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/onboarding"
+            element={
+              <PrivateRoute>
+                <Onboarding />
               </PrivateRoute>
             }
           />
@@ -75,6 +84,14 @@ const App = () => {
               </PrivateRoute>
             }
           />
+          {/* <Route
+            path="/onboarding"
+            element={
+              <PrivateRoute>
+                <Onboarding />
+              </PrivateRoute>
+            }
+          /> */}
           <Route
             path="/contact"
             element={

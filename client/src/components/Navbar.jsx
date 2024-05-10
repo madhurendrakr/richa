@@ -60,6 +60,7 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
           Search
         </button>
       </div>
+
       <div className="hidden md:flex font-bold text-2xl gap-4">
         <button
           onClick={toggleModeHandler}
@@ -99,7 +100,10 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
             </svg>
           )}
         </button>
-        <Link to={"/messages"} className="w-8 h-8 flex items-center justify-center p-1 bg-gray-400 rounded-full">
+        <Link
+          to={"/messages"}
+          className="w-8 h-8 flex items-center justify-center p-1 bg-gray-400 rounded-full"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -113,6 +117,20 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
             />
           </svg>
         </Link>
+
+        <h1>|</h1>
+        <Link
+          to={"/onboarding"}
+          className={`hover:underline ${
+            pathname === "/onboarding" ? "underline" : "no-underline"
+          } cursor-pointer hover:transition duration-75 ease-in-out ${
+            darkMode ? "text-white" : "text-black"
+          }`}
+        >
+          <span className="text-2xl text-black-700 drop-shadow-xl"> Guide</span>
+        </Link>
+
+        <h1>|</h1>
         <Link
           to={"/"}
           className={`hover:underline ${

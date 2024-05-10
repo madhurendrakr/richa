@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 const Footer = () => {
   return (
     <div className="bg-black">
-      <div className="container mx-auto py-12">
+      <div className="container mx-auto py-2">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="mb-8">
             <h1 className="text-4xl text-white font-semibold mb-4">
@@ -64,7 +64,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h2 className="text-2xl text-white mb-4  font-semibold">Connect</h2>
+            <h2 className="text-2xl text-white mb-4  font-semibold">Connect us</h2>
             <div className="flex  space-x-4">
               <a
                 href="https://www.facebook.com/"
@@ -91,7 +91,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 text-center text-white">
+        <div className="mt-1 text-center text-white">
           <p>
             &copy; {new Date().getFullYear()} Community Share App. All rights
             reserved.

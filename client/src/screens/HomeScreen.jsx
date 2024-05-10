@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import ProductCard from "../components/ProductCard";
-import Footer from "../components/Footer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -88,8 +87,6 @@ const HomeScreen = ({ searchTerm }) => {
           />
         </svg>
       </div>
-
-      
 
       <img
         className="w-full h-60 object-cover"
@@ -200,8 +197,6 @@ const HomeScreen = ({ searchTerm }) => {
               ))}
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };

@@ -2,15 +2,33 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { FaComment } from "react-icons/fa";
 
 const ProductDetailsScreen = () => {
   const params = useParams();
   const [showOptions, setShowOptions] = useState(false);
   const [availbilty, setavailibilty] = useState(true);
   const [addedTocart, setaddedTocart] = useState(false);
-  const [phoneNumber,setPhoneNumber] = useState(null);
-  const [isCallTapped,setIsCallTapped] = useState(false)
-  const [email,setEmail] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState(null);
+  const [isCallTapped, setIsCallTapped] = useState(false);
+  const [email, setEmail] = useState(null);
+
+  const feedback = [
+    "Wow, this is amazing!",
+    "I didn't expect that!",
+    "Great job, keep it up!",
+  ];
+
+  const [feedbackInput, setFeedbackInput] = useState(""); // New state variable to manage the feedback input value
+  const [feedbackList, setFeedbackList] = useState(feedback); // New state variable to manage the list of feedback
+
+  const handleFeedbackSubmit = () => {
+    if (feedbackInput.trim() !== "") {
+      setFeedbackList((prevList) => [feedbackInput, ...prevList]); // Add the feedback input to the feedback list
+      setFeedbackInput(""); // Clear input field after submitting
+    }
+  };
+
   const toggleOptions = () => {
     setShowOptions(!showOptions);
   };
@@ -22,27 +40,32 @@ const ProductDetailsScreen = () => {
     setaddedTocart(!addedTocart);
   };
   const handleEmailClick = (emailAddress) => {
-    const subject = 'Hello';
-    const body = 'I wanted to say...';
+    const subject = "Hello";
+    const body = "I wanted to say...";
 
-    const gmailComposeUrl = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const gmailComposeUrl = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${encodeURIComponent(
+      emailAddress
+    )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     // Open a new tab with the Gmail compose window
-    window.open(gmailComposeUrl, '_blank');
+    window.open(gmailComposeUrl, "_blank");
   };
   const [productData, setProductData] = useState(null);
-  const getUserData = (id)=>{
+  const getUserData = (id) => {
     // console.log(id);
-    axios.post("http://localhost:3000/getEmailAndPhoneById",{
-      id,
-    }).then(res=>{
-      // console.log(res.data);
-      setEmail(res.data.email)  
-      setPhoneNumber(res.data.phone || null)
-    }).catch(err=>{
-      console.log(err);
-    })
-  }
+    axios
+      .post("http://localhost:3000/getEmailAndPhoneById", {
+        id,
+      })
+      .then((res) => {
+        // console.log(res.data);
+        setEmail(res.data.email);
+        setPhoneNumber(res.data.phone || null);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const getProductData = (id) => {
     axios
       .post("http://localhost:3000/getProduct", {
@@ -51,7 +74,7 @@ const ProductDetailsScreen = () => {
       .then((res) => {
         // console.log(res.data);
         setProductData(res.data.product);
-        getUserData(res.data?.product?.addedBy)
+        getUserData(res.data?.product?.addedBy);
       })
       .catch((err) => {
         console.log(err);
@@ -64,7 +87,7 @@ const ProductDetailsScreen = () => {
 
   // console.log(params.data);
   const showpopup = () => {
-    alert(phoneNumber)
+    alert(phoneNumber);
   };
   return (
     <div>
@@ -132,7 +155,7 @@ const ProductDetailsScreen = () => {
             {showOptions && (
               <div className="flex">
                 <button
-                onClick={()=>handleEmailClick(email)}
+                  onClick={() => handleEmailClick(email)}
                   className="flex gap-2 justify-center items-center
                    flex-1 uppercase rounded-lg mt-1 mr-1 bg-orange-400
                  hover:bg-slate-600 text-white text-lg py-1"
@@ -154,7 +177,7 @@ const ProductDetailsScreen = () => {
                   Email
                 </button>
                 <button
-                  onClick={()=>setIsCallTapped((prev)=>!prev)}
+                  onClick={() => setIsCallTapped((prev) => !prev)}
                   className="flex-1 uppercase rounded-lg mt-1 ml-1 flex justify-center items-center gap-1
                  bg-pink-600 hover:bg-slate-600 text-white text-lg py-1"
                 >
@@ -181,6 +204,42 @@ const ProductDetailsScreen = () => {
         </div>
       </div>
       <hr className="border border-black mt-5" />
+      <div className="m-10">
+        <input
+          type="text"
+          value={feedbackInput}
+          onChange={(e) => setFeedbackInput(e.target.value)}
+          placeholder="Enter your feedback"
+          className="border border-gray-400 p-2 rounded-md w-1/2"
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              handleFeedbackSubmit();
+            }
+          }}
+        />
+        <br />
+        <button
+          onClick={handleFeedbackSubmit}
+          className="mt-2 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
+        >
+          Submit Feedback
+        </button>
+      </div>
+      <div className="m-10">
+        <h2 className="text-lg font-semibold mb-4">Feedback List:</h2>
+        <div className="grid gap-4">
+          {feedbackList.map((feedback, index) => (
+            <div
+              key={index}
+              className="bg-white p-4 rounded-lg shadow-md flex items-center w-1/2"
+            >
+              <FaComment className="text-blue-500 w-6 h-6 mr-2" />{" "}
+              {/* Display comment icon */}
+              <p className="text-base">{feedback}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
