@@ -22,12 +22,7 @@ export const messages_data = [
       "sender": "Ram",
       "message": "I'm good, thanks! How about you?",
       "timestamp": "2024-03-30T10:03:00Z"
-    },
-    {
-      "id": 5,
-      "sender": "Madhurendra",
-      "message": "I'm doing well too, thanks!",
-      "timestamp": "2024-03-30T10:04:00Z"
     }
+    
   ]
   

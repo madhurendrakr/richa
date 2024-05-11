@@ -5,10 +5,10 @@ const Onboarding = () => {
 
   const items = [
     {
-      image: "/img1.jpg",
+      image: "/c.jpg",
       alt: "My image",
-      title: "First Image",
-      description: "This is the description for the first image.",
+      title: "Upload items..",
+      description: " By taking on that floating plus icon u can add product by add required information about the product.",
     },
     {
       image: "/img2.jpg",

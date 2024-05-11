@@ -205,18 +205,27 @@ const ProductDetailsScreen = () => {
       </div>
       <hr className="border border-black mt-5" />
       <div className="m-10">
+        <h2 className="text-3xl font-semibold mb-4">Feedback: </h2>
+        <img src="/human logo.png" alt="" />
         <input
           type="text"
           value={feedbackInput}
           onChange={(e) => setFeedbackInput(e.target.value)}
           placeholder="Enter your feedback"
-          className="border border-gray-400 p-2 rounded-md w-1/2"
+          className="border border-gray-400 p-2 rounded-md w-1/2 pl-10" // Added pl-10 for padding-left to make space for the icon
           onKeyPress={(e) => {
             if (e.key === "Enter") {
               handleFeedbackSubmit();
             }
           }}
+          style={{
+            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="30" r="10" fill="currentColor"/><rect x="45" y="40" width="10" height="20" fill="currentColor"/><path d="M35,50 Q45,40 55,50" fill="none" stroke="currentColor" stroke-width="3"/><path d="M65,50 Q55,40 45,50" fill="none" stroke="currentColor" stroke-width="3"/><path d="M48,60 Q50,70 52,60" fill="none" stroke="currentColor" stroke-width="3"/><path d="M48,80 Q50,90 52,80" fill="none" stroke="currentColor" stroke-width="3"/></svg>')`, // SVG code for the man icon
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "5px center", // Adjust this value according to your design
+            backgroundSize: "20px 20px", // Adjust this value according to your design
+          }}
         />
+
         <br />
         <button
           onClick={handleFeedbackSubmit}
@@ -226,7 +235,7 @@ const ProductDetailsScreen = () => {
         </button>
       </div>
       <div className="m-10">
-        <h2 className="text-lg font-semibold mb-4">Feedback List:</h2>
+        {/* <h2 className="text-lg font-semibold mb-4">Feedback List:</h2> */}
         <div className="grid gap-4">
           {feedbackList.map((feedback, index) => (
             <div

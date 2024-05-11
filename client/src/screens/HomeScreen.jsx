@@ -133,19 +133,19 @@ const HomeScreen = ({ searchTerm }) => {
               </div>
               <div className="flex gap-1">
                 <input type="checkbox" />
-                <h1>Item1</h1>
+                <h1>Cycle</h1>
               </div>
               <div className="flex gap-1">
                 <input type="checkbox" />
-                <h1>Item2</h1>
+                <h1>Cloth</h1>
               </div>
               <div className="flex gap-1">
                 <input type="checkbox" />
-                <h1>Item3</h1>
+                <h1>Tech Gadgets</h1>
               </div>
               <div className="flex gap-1">
                 <input type="checkbox" />
-                <h1>Item4</h1>
+                <h1>General</h1>
               </div>
             </div>
           </div>
