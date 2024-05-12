@@ -5,22 +5,42 @@ const Onboarding = () => {
 
   const items = [
     {
-      image: "/c.jpg",
+      image: "/c1.jpg",
       alt: "My image",
-      title: "Upload items..",
-      description: " By taking on that floating plus icon u can add product by add required information about the product.",
+      title: "Feedback Page",
+      description:
+        " 1. This is page where you can give feedback and review about a particular product. ",
     },
     {
-      image: "/img2.jpg",
+      image: "/c2.jpg",
       alt: "My image",
-      title: "Second Image",
-      description: "This is the description for the second image.",
+      title: "Upload Items",
+      description: "It allows users to upload a new items. ",
     },
     {
-      image: "/img3.jpg",
+      image: "/c3.jpg",
       alt: "My image",
-      title: "Third Image",
-      description: "This is the description for the third image.",
+      title: "Filter Section",
+      description:
+        "This section allow the filter of of product based on categories and availble products.",
+    },
+    {
+      image: "/c4.jpg",
+      alt: "My image",
+      title: "Chat Interface",
+      description: " Here user can chat in group with other users.",
+    },
+    {
+      image: "/c5.jpg",
+      alt: "My image",
+      title: "Product Page",
+      description: "This page show the details about a particular product.",
+    },
+    {
+      image: "/c6.jpg",
+      alt: "My image",
+      title: "Contact Page ",
+      description: "Here user can give required details and contact to admin.",
     },
   ];
 
@@ -54,10 +74,10 @@ const Onboarding = () => {
                   className=" w-[70rem] h-[38rem] rounded-lg rounded-bl-2xl"
                 />
                 <div className="absolute bottom-0  w-[70rem] bg-black bg-opacity-70 text-white p-4 content-around rounded-2xl">
-                  <h2 className="text-lg font-semibold text-center">
+                  <h2 className="text-2xl mb-5 font-semibold text-center shadow-2xl">
                     {item.title}
                   </h2>
-                  <p className="text-sm text-center">{item.description}</p>
+                  <p className="text-md text-center">{item.description}</p>
                 </div>
               </div>
             ))}
